@@ -20,12 +20,12 @@ spec:
     spec:
       containers:
         - name: hello-node-container
-          image: nginx:alpine
+          image: kodekloud/webapp-color:latest
           ports:
-            - containerPort: 80
-          volumeMounts:
-            - name: html-content
-              mountPath: /usr/share/nginx/html
+            - containerPort: 8080
+          env:
+            - name: APP_COLOR
+              value: "darkblue"
           resources:
             requests:
               memory: "64Mi"
@@ -33,7 +33,3 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "250m"
-      volumes:
-        - name: html-content
-          configMap:
-            name: hello-node-html
