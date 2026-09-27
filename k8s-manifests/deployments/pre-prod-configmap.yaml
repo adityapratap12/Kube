@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-node-html
+  namespace: pre-prod
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Hello World</title>
+      <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #fff3e0; }
+        .card { text-align: center; padding: 40px; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h1 { font-size: 3rem; margin-bottom: 10px; }
+        .badge { display: inline-block; padding: 6px 20px; background: #e65100; color: white; border-radius: 20px; font-size: 1rem; letter-spacing: 1px; }
+      </style>
+    </head>
+    <body>
+      <div class="card">
+        <h1>Hello World!</h1>
+        <p>You are visiting the</p>
+        <span class="badge">PRE-PROD Environment</span>
+      </div>
+    </body>
+    </html>

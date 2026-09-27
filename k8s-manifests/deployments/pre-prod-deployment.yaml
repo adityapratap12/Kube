@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-node-preprod
+  namespace: pre-prod
+  labels:
+    app: hello-node
+    environment: pre-prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-node
+      environment: pre-prod
+  template:
+    metadata:
+      labels:
+        app: hello-node
+        environment: pre-prod
+    spec:
+      containers:
+        - name: hello-node-container
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: html-content
+              mountPath: /usr/share/nginx/html
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "250m"
+      volumes:
+        - name: html-content
+          configMap:
+            name: hello-node-html
